@@ -21,7 +21,7 @@ EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 UPLOAD_DIR = "uploaded_docs"
 VECTOR_DB_DIR = "vector_stores"
 OLLAMA_URL = "http://localhost:11434/api/generate"  # Default Ollama server
-OLLAMA_MODEL = "phi4-mini-reasoning:latest"  # Replace with your chosen SLM model name
+OLLAMA_MODEL = "phi3:mini"  # Replace with your chosen SLM model name
 
 # =============== MODELS =================
 embedder = SentenceTransformer(EMBEDDING_MODEL)
@@ -62,6 +62,7 @@ def get_or_create_index(company_id: str, dim: int):
     if company_id in company_indexes:
         return company_indexes[company_id]
     index = faiss.IndexFlatL2(dim)
+    print(index)
     company_indexes[company_id] = index
     company_docs[company_id] = []
     return index
@@ -127,20 +128,40 @@ def chat(company_id: str, query: str, top_k: int = 3):
 
 # =============== DEMO CELLS =================
 # Create fake docs for multiple companies
-with open("companyA_faq.txt", "w") as f:
-    f.write("Employees at Company A receive 20 days of paid leave per year. Remote work is allowed twice a week.")
+with open("TechCorp.txt", "w") as f:
+    f.write("""
+1. Employees at TechCorp get 20 days of paid leave per year.
+2. Remote work is allowed up to 3 days a week.
+3. TechCorp reimburses up to $500 per year for learning and development courses.
+""")
 
-with open("companyB_faq.txt", "w") as f:
-    f.write("Company B offers 15 days of paid leave. Employees also get health insurance and travel reimbursements.")
+with open("HealthPlus.txt", "w") as f:
+    f.write("""
+1. HealthPlus provides 15 days of paid sick leave annually.
+2. Employees get free annual health checkups.
+3. Health insurance covers dependents including spouse and children.
+""")
+    
+with open("EduWorld.txt", "w") as f:
+    f.write("""
+1. EduWorld offers 25 days of vacation leave per year.
+2. Tuition reimbursement is provided for relevant higher education programs.
+3. Employees can access free online learning platforms like Coursera and Udemy.
+""")
 
 # Upload docs for both companies
-print(upload_docs("companyA", ["companyA_faq.txt"]))
-print(upload_docs("companyB", ["companyB_faq.txt"]))
+print(upload_docs("TechCorp", ["TechCorp.txt"]))
+print(upload_docs("HealthPlus", ["HealthPlus.txt"]))
+print(upload_docs("EduWorld", ["EduWorld.txt"]))
 
 # Query company A
-print("\n--- Chat with Company A ---")
-print(chat("companyA", "How many days of paid leave do employees get?"))
+print("\n--- Chat with TechCorp ---")
+print(chat("TechCorp", "is it a good company to work for?"))
 
 # Query company B
-print("\n--- Chat with Company B ---")
-print(chat("companyB", "What benefits do employees get?"))
+print("\n--- Chat with HealthPlus ---")
+print(chat("HealthPlus", "do they offer health insurance for dependents?"))
+
+# Query company C
+print("\n--- Chat with EduWorld ---")
+print(chat("EduWorld", "what learning benefits do employees have?"))
