@@ -41,15 +41,15 @@ async def initialize_database():
         # Create tables
         print("Creating database tables...")
         await db.create_tables()
-        print("✅ Tables created successfully!")
+        print("Tables created successfully!")
         
         # Create admin user
         print("Creating admin user...")
         await create_admin_user()
-        print("✅ Database initialization complete!")
+        print("Database initialization complete!")
         
     except Exception as e:
-        print(f"❌ Error initializing database: {str(e)}")
+        print(f"Error initializing database: {str(e)}")
     finally:
         await db.close()
 

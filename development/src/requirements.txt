@@ -9,6 +9,7 @@ langchain-ollama
 langchain-huggingface
 chromadb
 pypdf
+sentence-transformers
 python-multipart
 PyJWT
 passlib[bcrypt]

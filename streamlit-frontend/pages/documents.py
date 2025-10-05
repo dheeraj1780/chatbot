@@ -64,10 +64,10 @@ with tab1:
                     result = create_group(group_name, group_description, get_headers())
                     
                     if result['success']:
-                        st.success(f"✅ Group '{group_name}' created successfully!")
+                        st.success(f"Group '{group_name}' created successfully!")
                         st.balloons()
                     else:
-                        st.error(f"❌ Failed to create group: {result['error']}")
+                        st.error(f"Failed to create group: {result['error']}")
     
     st.markdown("---")
     
