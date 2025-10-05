@@ -2,7 +2,6 @@ fastapi[standard]
 uvicorn[standard]
 sqlalchemy[asyncio]
 asyncpg
-psycopg2-binary
 langchain
 langchain-chroma
 langchain-community
