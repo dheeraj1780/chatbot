@@ -1,8 +1,3 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
 # API Configuration
 API_BASE_URL = 'https://chatbot-6mgz.onrender.com'
 
