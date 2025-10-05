@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: rag_chatbot
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: your_password_here
+      POSTGRES_PASSWORD: admin
     ports:
       - "5432:5432"
     volumes:
@@ -25,9 +25,9 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DB_HOST: postgres
+      DB_HOST: localhost
       DB_USER: postgres
-      DB_PASSWORD: your_password_here
+      DB_PASSWORD: admin
       DB_NAME: rag_chatbot
     volumes:
       - ./chroma_db:/app/chroma_db

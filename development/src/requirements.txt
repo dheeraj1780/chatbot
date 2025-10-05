@@ -14,27 +14,3 @@ PyJWT==2.8.0
 passlib[bcrypt]==1.7.4
 python-dotenv==1.0.0
 pydantic==2.5.0
-
-
-# ===== .env =====
-# Database Configuration
-DB_USER=postgres
-DB_PASSWORD=your_password_here
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=rag_chatbot
-
-# JWT Configuration
-JWT_SECRET_KEY=your-super-secret-jwt-key-here
-JWT_ALGORITHM=HS256
-JWT_ACCESS_TOKEN_EXPIRE_MINUTES=30
-
-# Ollama Configuration
-OLLAMA_MODEL=phi3:mini
-OLLAMA_BASE_URL=http://localhost:11434
-
-# Vector Database
-CHROMA_PATH=./chroma_db
-
-# File Storage
-UPLOAD_DIR=./uploads
