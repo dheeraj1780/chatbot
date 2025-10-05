@@ -4,6 +4,7 @@ sqlalchemy[asyncio]
 asyncpg
 psycopg2-binary
 langchain
+langchain-chroma
 langchain-community
 langchain-ollama
 langchain-huggingface
